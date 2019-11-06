@@ -29,6 +29,7 @@ Please cite our paper if you use this code in your own work:
   title={Adversarial Preference Learning with Pairwise Comparisons},
   author={Wang, Zitai and Xu, Qianqian and Ma, Ke and Jiang, Yangbangyan and Cao, Xiaochun and Huang, Qingming},
   booktitle={ACM on Multimedia Conference},
+  pages={656--664},
   year={2019}
 }
 ```
