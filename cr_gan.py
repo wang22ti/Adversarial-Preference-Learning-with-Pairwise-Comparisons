@@ -16,13 +16,13 @@ d_lr, r_lr = 0.01, 0.05
 out = True
 dataset = 'ml100k'
 now = time()
-ranker_out_file = 'Pretrain/%d_%s_Ranker_%s.h5' % (now, dataset, ranker_layers)
-dis_out_file = 'Pretrain/%d_%s_Dis_%s.h5' % (now, dataset, discriminator_layers)
-log_file = 'Pretrain/%d_%s_%d.txt' % (now, dataset, K)
+ranker_out_file = 'checkpoints/%d_%s_Ranker_%s.h5' % (now, dataset, ranker_layers)
+dis_out_file = 'checkpoints/%d_%s_Dis_%s.h5' % (now, dataset, discriminator_layers)
+log_file = 'checkpoints/%d_%s_%d.txt' % (now, dataset, K)
 
-pre_train = False
+re_load = False
 in_time = 1549967959
-in_path = 'Pretrain'
+in_path = 'checkpoints'
 ranker_in_file = '%s/%s_%s_Ranker_%s.h5' % (in_path, in_time, dataset, ranker_layers)
 dis_in_file = '%s/%s_%s_Dis_%s.h5' % (in_path, in_time, dataset, discriminator_layers)
 
@@ -136,7 +136,7 @@ class CRGAN:
 
     def train(self):
 
-        if pre_train is True:
+        if re_load is True:
             self.ranker.load_weights(ranker_in_file)
             # self.discriminator.load_weights(dis_in_file)
         metrics = evaluate_model(self.ranker, testItems, testRatings, K)
