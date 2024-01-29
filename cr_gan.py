@@ -20,7 +20,7 @@ ranker_out_file = 'checkpoints/%d_%s_Ranker_%s.h5' % (now, dataset, ranker_layer
 dis_out_file = 'checkpoints/%d_%s_Dis_%s.h5' % (now, dataset, discriminator_layers)
 log_file = 'checkpoints/%d_%s_%d.txt' % (now, dataset, K)
 
-re_load = False
+resume = False
 in_time = 1549967959
 in_path = 'checkpoints'
 ranker_in_file = '%s/%s_%s_Ranker_%s.h5' % (in_path, in_time, dataset, ranker_layers)
@@ -136,7 +136,7 @@ class CRGAN:
 
     def train(self):
 
-        if re_load is True:
+        if resume is True:
             self.ranker.load_weights(ranker_in_file)
             # self.discriminator.load_weights(dis_in_file)
         metrics = evaluate_model(self.ranker, testItems, testRatings, K)
